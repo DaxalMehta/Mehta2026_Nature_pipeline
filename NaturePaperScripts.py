@@ -266,21 +266,21 @@ class Scripts:
         for i in range(4):
             start_snap, end_snap = DU.file_range(f"{self.base}{self.dir[i]}")
             # Loading in basic data for BHs that accreted more than 0.1 solar masses
-            id, snaps, m_init, m_final, m_diff = np.genfromtxt(f"../Analysis/{self.dir[i]}sink_0.1.txt", usecols=(0,1,2,3,4), skip_header=1, unpack=True)
+            id, snaps, m_init, m_final, m_diff = np.genfromtxt(f"{self.dir[i]}sink_0.1.txt", usecols=(0,1,2,3,4), skip_header=1, unpack=True)
             first_snap = np.min(snaps).astype(int)
 
             SinkData = SinkParticles.SinkData(f"{self.base}{self.dir[i]}")
             sink_particles = SinkData.sink_particles
 
             # Loading the data of gas surrouning the BHs (Processed from larger datasets)
-            MassSink = np.load(f"../Analysis/{self.dir[i]}mass_sink.npy")
-            MassInfalling = np.load(f"../Analysis/{self.dir[i]}mass_infalling.npy")
-            MassSurrounding = np.load(f"../Analysis/{self.dir[i]}mass_surrounding.npy")
-            Mdot = np.load(f"../Analysis/{self.dir[i]}mdot.npy")
-            Redshift = np.load(f"../Analysis/{self.dir[i]}redshift.npy")
-            Velocity = np.load(f"../Analysis/{self.dir[i]}velocity.npy")
-            Temperature = np.load(f"../Analysis/{self.dir[i]}Temperature.npy")
-            Metallicity = np.load(f"../Analysis/{self.dir[i]}Metallicity.npy")
+            MassSink = np.load(f"{self.dir[i]}mass_sink.npy")
+            MassInfalling = np.load(f"{self.dir[i]}mass_infalling.npy")
+            MassSurrounding = np.load(f"{self.dir[i]}mass_surrounding.npy")
+            Mdot = np.load(f"{self.dir[i]}mdot.npy")
+            Redshift = np.load(f"{self.dir[i]}redshift.npy")
+            Velocity = np.load(f"{self.dir[i]}velocity.npy")
+            Temperature = np.load(f"{self.dir[i]}Temperature.npy")
+            Metallicity = np.load(f"{self.dir[i]}Metallicity.npy")
             ZAvg = np.zeros(len(id), float)
 
             # Looping over the BHs
@@ -417,7 +417,7 @@ class Scripts:
             # Loading the binary file data for sink particles
             self.BinaryReader = DataReader.BinaryReader(f"{self.base}{self.dir[i]}", feedback=self.feedback[i], array_length=350)
             # Loading in the statistical BH data for all BHs that accreted more than 0.1 solar masses
-            id, snaps, m_init, m_final, m_diff = np.genfromtxt(f"../Analysis/{self.dir[i]}sink_0.1.txt", usecols=(0,1,2,3,4), skip_header=1, unpack=True)
+            id, snaps, m_init, m_final, m_diff = np.genfromtxt(f"{self.dir[i]}sink_0.1.txt", usecols=(0,1,2,3,4), skip_header=1, unpack=True)
             first_snap = np.min(snaps).astype(int)
 
             HaloNrMass = np.zeros(len(id), float)
@@ -500,13 +500,13 @@ class Scripts:
         
         for i in range(4):
             start_snap, end_snap = DU.file_range(f"{self.base}{self.dir[i]}")
-            id, snaps, m_init, m_final, m_diff = np.genfromtxt(f"../Analysis/{self.dir[i]}sink_0.1.txt", usecols=(0,1,2,3,4), skip_header=1, unpack=True)
+            id, snaps, m_init, m_final, m_diff = np.genfromtxt(f"{self.dir[i]}sink_0.1.txt", usecols=(0,1,2,3,4), skip_header=1, unpack=True)
 
             first_snap = np.min(snaps).astype(int)
         
-            MassSink = np.load(f"../Analysis/{self.dir[i]}mass_sink.npy")
-            MassSurrounding = np.load(f"../Analysis/{self.dir[i]}mass_surrounding.npy")
-            Redshift = np.load(f"../Analysis/{self.dir[i]}redshift.npy")
+            MassSink = np.load(f"{self.dir[i]}mass_sink.npy")
+            MassSurrounding = np.load(f"{self.dir[i]}mass_surrounding.npy")
+            Redshift = np.load(f"{self.dir[i]}redshift.npy")
             FormationSigma = np.zeros(len(id))
             for j, ID in enumerate(id):
                 if m_init[j] > 300: continue
